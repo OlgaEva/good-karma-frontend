@@ -1,0 +1,154 @@
+/*GOOGLE FONTS
+Josefin Slab, usage: font-family: 'Josefin Slab', serif;
+
+and
+Fredericka The Great
+<link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Josefin+Slab&display=swap" rel="stylesheet">
+
+font-family: 'Fredericka the Great', cursive;
+*/
+
+.logo {
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 7em;
+  color: white;
+  text-align: center;
+}
+
+.avatar {
+  width: 80px;
+  border-radius: 50%;
+}
+
+body {
+    background-image: url("https://i.ibb.co/HF7MF3t/perry-grone-lb-Lg-FFl-ADr-Y-unsplash.jpg"); 
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Josefin Slab', serif; 
+}
+
+.login-bar {
+  background: rgb(248, 249, 250);
+  text-align: right;
+  border-radius: 4px;
+  font-family: 'Josefin Slab', serif; 
+  padding: 10px;
+}
+
+.logout-btn {
+  background-color: rgb(62, 115, 198);
+  border-radius: 4px;
+  padding: 8px;
+  /* font-family: 'Josefin Slab', serif;  */
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.page-div {
+  text-align: center;
+}
+
+.signup-form {
+  display: inline-block;
+}
+
+.search-area {
+  text-align: center;
+  background-color: rgb(193, 187, 224);
+  border-radius: 4px;
+  font-family: 'Josefin Slab', serif; 
+  padding: 50px;
+}
+
+.card {
+  padding: 5px;
+  background-color: rgb(248, 249, 250); 
+  height: 200px;
+}
+
+.more-btn {
+  display: inline-block;
+  float: right;
+  background-color: rgb(62, 115, 198);
+  border-radius: 4px;
+  padding: 8px;
+  /* font-family: 'Josefin Slab', serif;  */
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.back-btn {
+  display: inline-block;
+  float: left;
+  background-color: rgb(62, 115, 198);
+  border-radius: 4px;
+  padding: 8px;
+  /* font-family: 'Josefin Slab', serif;  */
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+/* .login-box {
+  width: 700px;
+  height: 350px;
+  background-color: lightcyan;
+  opacity: 0.75;
+  display: inline-block;
+  border-radius: 10%;
+} */
+
+/* .login {
+  padding: 100px;
+  width: 300px;
+  float: left; */
+  /* text-align: center; */
+/* } */
+
+/* .login-button {
+  display: inline-block;
+} */
+
+/* .signup {
+  padding: 100px 100px 100px 100px;
+  width: 300px;
+  float: right;
+} */
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
