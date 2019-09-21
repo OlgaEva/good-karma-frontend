@@ -66,6 +66,8 @@ body {
   padding: 5px;
   background-color: rgb(248, 249, 250); 
   height: 200px;
+  border-radius: 4px;
+  font-family: 'Josefin Slab', serif; 
 }
 
 .more-btn {
@@ -92,6 +94,10 @@ body {
   border: none;
 }
 
+.details-container {
+  background-color: white;
+  border-radius: 4px;
+}
 /* .login-box {
   width: 700px;
   height: 350px;

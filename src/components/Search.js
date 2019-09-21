@@ -24,7 +24,7 @@ class Search extends React.Component {
     render(){
 
         const filteredOpportunities = this.state.opportunities.filter(oppty => oppty.address.includes(this.state.searchTerm))
-        console.log(filteredOpportunities)
+    
         return(
             <div className="search-area">
             <h2>Where would you like to volunteer?</h2>
@@ -35,7 +35,7 @@ class Search extends React.Component {
             <br/>
             
             {this.state.searchSubmitted ? (
-                <SearchResults opportunities={filteredOpportunities}/>
+                <SearchResults handleSubmit={this.handleSubmit} opportunities={filteredOpportunities}/>
             ) : null }
             
             </div>
