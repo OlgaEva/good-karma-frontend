@@ -6,7 +6,8 @@ import { format } from 'path'
 class SignUp extends React.Component {
     state = {
         username: '',
-        password: ''
+        password: '',
+        monthly_goal: ''
     }
 
     handleChange = (e) => {
@@ -32,6 +33,7 @@ class SignUp extends React.Component {
     }
 
   render(){
+    console.log("sign up props ", this.state)
     return(
       <div className="page-div">
         <Header />
@@ -58,6 +60,16 @@ class SignUp extends React.Component {
                 label='Password'
                 type='password'
                 name="password"
+            />
+            <Form.Input
+                onChange={this.handleChange}
+                value={this.state.goal}
+                icon='star'
+                iconPosition='left'
+                label='What is your monthly goal?'
+                placeholder='Target volunteer hours'
+                type='text'
+                name="monthly_goal"
             />
 
           <Button content='Signup' primary />

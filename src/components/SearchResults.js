@@ -34,11 +34,20 @@ class SearchResults extends React.Component{
         this.setState({cardClicked: !this.state.cardClicked})
     }
 
-    render(){
+    resetCounter = () => {
+        if(this.props.searchSubmitted){
+            this.setState({counter: this.state.counter - this.state.counter})     
+        } else {
+        }
+    }
 
+
+    render(){
+        // console.log("the counter on search results ", this.state.counter)
+        // console.log("search results props ", this.props)
         return(
             this.state.cardClicked ? (
-            <OpptyShowPage key={ this.state.whichCard.id } opportunity = { this.state.whichCard } handleBackToSearchResults={this.handleBackToSearchResults}/> 
+            <OpptyShowPage favorites={this.props.favorites} addToFavorites={this.props.addToFavorites} key={ this.state.whichCard.id } opportunity = { this.state.whichCard } handleBackToSearchResults={this.handleBackToSearchResults} resetCounter={this.resetCounter}/> 
            ) : (
                <div>
   <Grid relaxed columns={4}>

@@ -18,7 +18,7 @@ class LandingPage extends React.Component {
     }
 
   render() {
-    //   console.log(this.props)
+    //   console.log("landingpage props ", this.props)
     return(
         <div className="page-div">
         <Header />

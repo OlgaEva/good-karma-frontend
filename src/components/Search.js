@@ -18,16 +18,18 @@ class Search extends React.Component {
         .then(res => res.json())
         .then(data => { 
             this.setState({opportunities:data, searchSubmitted: true})
+
     })
 }
 
     render(){
-
-        const filteredOpportunities = this.state.opportunities.filter(oppty => oppty.address.includes(this.state.searchTerm))
-    
+    // console.log("the search props ", this.props)
+        const filteredOpportunities = this.state.opportunities.filter(oppty => oppty.address.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
+    // console.log(filteredOpportunities)
         return(
             <div className="search-area">
-            <h2>Where would you like to volunteer?</h2>
+                
+            <h2 className="question">Where would you like to volunteer?</h2>
             <form onSubmit={this.handleSubmit}>
             <input onChange={this.handleChange} value={this.state.searchTerm} type="text" placeholder="Search for opportunities" />
             <input type="submit" value="Search" />
@@ -35,7 +37,7 @@ class Search extends React.Component {
             <br/>
             
             {this.state.searchSubmitted ? (
-                <SearchResults handleSubmit={this.handleSubmit} opportunities={filteredOpportunities}/>
+                <SearchResults favorites={this.props.favorites} addToFavorites={this.props.addToFavorites} handleSubmit={this.handleSubmit} opportunities={filteredOpportunities} searchSubmitted={this.state.searchSubmitted}/>
             ) : null }
             
             </div>
