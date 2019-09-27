@@ -15,10 +15,10 @@ font-family: 'Fredericka the Great', cursive;
   text-align: center;
 }
 
-.avatar {
+/* .avatar {
   width: 80px;
   border-radius: 50%;
-}
+} */
 
 body {
     background-image: url("https://i.ibb.co/HF7MF3t/perry-grone-lb-Lg-FFl-ADr-Y-unsplash.jpg"); 
@@ -57,7 +57,21 @@ body {
 
 .search-area {
   text-align: center;
+  width: 72%;
+  float: right;
   background-color: rgb(193, 187, 224);
+  border-radius: 4px;
+  font-family: 'Josefin Slab', serif; 
+  padding: 50px;
+  margin-left: 2px;
+}
+
+.sidebar {
+  text-align: center;
+  width: 26%;
+  height: 447px;
+  float: left;
+  background-color: lightgrey;
   border-radius: 4px;
   font-family: 'Josefin Slab', serif; 
   padding: 50px;
@@ -104,29 +118,50 @@ body {
 .your-volunteer {
     z-index: 1;
     color: white;
-    float: left;
     background-color: rgb(62, 115, 198);
     font-family: 'Josefin Slab', serif;
-    text-align: left; 
     font-weight: bold;
     border-radius: 4px;
     padding: 8px;
-    margin-left: 8px;
-    margin-bottom: -50px;
+    display: inline-block;
+    text-align: center;
+    width: 230px;
+    margin-right: 10px;
+    margin-left: -30px;
+    margin-top: -7px;
+    
 }
 
 .your-volunteer-btn {
+  z-index: 1;
   color: white;
   float: left;
+  display: inline-block;
   background-color: rgb(62, 115, 198);
   /* font-family: 'Josefin Slab', serif; */
-  text-align: left; 
+  width: 230px;
+  text-align: center; 
   font-weight: bold;
   border-radius: 4px;
   padding: 8px;
   border: none;
-  margin-left: 8px;
+  margin-right: 10px;
+  margin-left: -30px;
   margin-top: -7px;
+}
+
+.li {
+  font-size: 12px;
+  text-align: left;
+}
+
+.form {
+  border-radius: 4px;
+}
+
+.form-description {
+  border-radius: 4px;
+  height: 100px;
 }
 
 /* .welcome {
@@ -157,8 +192,18 @@ body {
   padding: 8px;
 }
 
+.gkpoints {
+  float: left;
+  margin-top: -2px;
+  margin-left: 15px;
+}
+
 .star-span {
   text-align: center;
+  float: left;
+  margin-left: 18px;
+  margin-top: 2px;
+  font-size: 2em;
 } 
 
 .star {

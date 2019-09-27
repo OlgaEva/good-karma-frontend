@@ -8,9 +8,16 @@ class OpptyShowPage extends React.Component {
     }
 
     handleClick = (opptyObj) => {
-      console.log(opptyObj, this.props.favorites)
-      if(!this.props.favorites.includes(opptyObj)){
+      console.log(opptyObj.id, this.props.favorites)
+
+      let opportunity = this.props.favorites.find(oppty => {
+        return oppty.job_id === opptyObj.id
+      })
+
+      if(!opportunity){
       this.props.addToFavorites(opptyObj)
+    } else{
+      alert("You already have this in your favorites")
     }
   }
 

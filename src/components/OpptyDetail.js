@@ -6,9 +6,7 @@ class OpptyDetail extends React.Component {
         return(
             <div onClick={() => this.props.onClick(this.props.opportunity)}>
                 <h4>{this.props.opportunity.organization}</h4>
-                <p>{this.props.opportunity.title}/</p>
-                <br />
-                <p>{this.props.opportunity.address}</p>
+                <p>{this.props.opportunity.title}/</p>     
                 </div>
         )
     }

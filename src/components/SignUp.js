@@ -7,7 +7,9 @@ class SignUp extends React.Component {
     state = {
         username: '',
         password: '',
-        monthly_goal: ''
+        monthly_goal: '',
+        points: 100,
+        admin: false
     }
 
     handleChange = (e) => {
@@ -71,7 +73,7 @@ class SignUp extends React.Component {
                 type='text'
                 name="monthly_goal"
             />
-
+<br />
           <Button content='Signup' primary />
         </Form>
       </Grid.Column>

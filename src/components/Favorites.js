@@ -12,16 +12,16 @@ class Favorites extends React.Component {
     }
 
     render() {
-        const favoritesMapped = this.props.favorites.map(fav => (<li onClick={() => this.handleOpptyClick(fav)} key={fav.id}>{fav.organization}</li>))
-        const pastWorkMapped = this.props.pastWork.map(pastW => (<li key={pastW.id}>{pastW.organization}</li>))
+        const favoritesMapped = this.props.favorites.map(fav => (<li className="li" onClick={() => this.handleOpptyClick(fav)} key={fav.id}>{fav.organization}</li>))
+        const pastWorkMapped = this.props.pastWork.map(pastW => (<li className="li" key={pastW.id}>{pastW.organization}</li>))
         return(
             <div className="your-volunteer">
                 <div><span className="closing-x" onClick={this.handleClick}>𝗫</span></div>
-                <h4>Your Favorite Volunteer Ops:</h4>
+                <h5>Favorite Volunteer Ops:</h5>
                 <ul>
                 {favoritesMapped}
                 </ul>
-                <h4>Your Past Volunteer Activity:</h4>
+                <h5>Past Volunteer Activity:</h5>
                 <ul>
                 {pastWorkMapped}
                 </ul>

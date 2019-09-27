@@ -24,7 +24,6 @@ class LandingPage extends React.Component {
         <Header />
         <br />
         <LoginForm redirect={this.props.redirect}/>
-        
         </div>
         )
     }

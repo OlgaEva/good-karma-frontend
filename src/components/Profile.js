@@ -2,15 +2,20 @@ import React from 'react'
 import Header from './Header'
 import LoginBar from './LoginBar'
 import Search from './Search'
+import SideBar from './SideBar'
+import NewJobForm from './NewJobForm'
 
 class Profile extends React.Component {
     state = {
+        user: {},
         username: '',
         userId: '',
         favorites: [],
         monthlyGoal: '',
         points: '',
-        pastWork: []
+        pastWork: [],
+        newJobClicked: false,
+        editJobClicked: false
     }
 
     componentDidMount(){
@@ -21,8 +26,9 @@ class Profile extends React.Component {
     })
     .then(res => res.json())
     .then(user => {
-        console.log(user.favorites)
+        console.log(user.admin)
         this.setState({
+            user: user,
             username: user.username, 
             userId: user.id, 
             favorites: user.favorites.filter(fav => fav.done === false), 
@@ -56,8 +62,7 @@ addToFavorites = (opptyObj) => {
 }
 
 addToPastWork = (opptyObj) => {
-    // console.log(opptyObj)
-    this.setState({pastWork: [...this.state.pastWork, opptyObj]})
+    this.setState({pastWork: [...this.state.pastWork, opptyObj], points: this.state.points + 25})
     const filteredFavs = this.state.favorites.filter(fav => fav.id !== opptyObj.id)
     this.setState({ favorites: filteredFavs })
 
@@ -73,9 +78,41 @@ addToPastWork = (opptyObj) => {
       })
     }
 
+    handleNewJobClicked = () => {
+        this.setState({newJobClicked: true})
+    }
+
+    closeNewJobs = () => {
+        this.setState({newJobClicked: false})
+    }
+
+    handleAddNewJob = (newJobOppty) => {
+        console.log(newJobOppty.organization)
+        const newJob = {
+            organization: newJobOppty.organization,
+            address: newJobOppty.address,
+            title: newJobOppty.title,
+            description: newJobOppty.description
+        }
+
+        fetch('http://localhost:3000/jobs', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(newJob)
+        })
+    }
+    
+    handleEditJobClicked = () => {
+        console.log("editing this job....")
+        this.setState({editJobClicked: true})
+    }
+
     render() {
-        // console.log("profile props ", this.props)
-        console.log("profile's state ", this.state)
+        // console.log("profile props ", user)
+        console.log("profile's state editClicked? ", this.state.editJobClicked)
         // const doneFavs = this.state.favorites.filter(fav => fav.done === true)
     
         return(
@@ -84,7 +121,11 @@ addToPastWork = (opptyObj) => {
             <br />
             <LoginBar addToPastWork={this.addToPastWork} pastWork={this.state.pastWork} points={this.state.points} monthlyGoal={this.state.monthlyGoal} favorites={this.state.favorites} redirect={this.props.redirect} username={this.state.username}/>
             <br />
+            {this.state.newJobClicked ? ( 
+            <NewJobForm handleAddNewJob={this.handleAddNewJob} closeNewJobs={this.closeNewJobs}/> ) :
             <Search favorites={this.state.favorites} addToFavorites={this.addToFavorites}/>
+            }
+            <SideBar editJobClick={this.state.editJobClicked} handleEditJobClicked={this.handleEditJobClicked} handleNewJobClicked={this.handleNewJobClicked} user={this.state.user} addToPastWork={this.addToPastWork} pastWork={this.state.pastWork} points={this.state.points} monthlyGoal={this.state.monthlyGoal} favorites={this.state.favorites} redirect={this.props.redirect} username={this.state.username}/> 
             </div>
         )
     }

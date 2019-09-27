@@ -9,7 +9,7 @@ class Search extends React.Component {
     }
 
     handleChange = (e) => {
-        this.setState({searchTerm: e.target.value})
+        this.setState({searchTerm: e.target.value, searchSubmitted: false})
     }
 
     handleSubmit = (e) => {
@@ -18,7 +18,6 @@ class Search extends React.Component {
         .then(res => res.json())
         .then(data => { 
             this.setState({opportunities:data, searchSubmitted: true})
-
     })
 }
 

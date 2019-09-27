@@ -60,7 +60,7 @@ class LoginForm extends React.Component {
             type='password'
             name='password'
           />
-
+<br />
 <Button content='Login' primary />
         </Form>
       </Grid.Column>
