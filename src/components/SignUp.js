@@ -35,7 +35,7 @@ class SignUp extends React.Component {
     }
 
   render(){
-    console.log("sign up props ", this.state)
+    // console.log("sign up props ", this.state)
     return(
       <div className="page-div">
         <Header />

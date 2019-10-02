@@ -15,11 +15,6 @@ font-family: 'Fredericka the Great', cursive;
   text-align: center;
 }
 
-/* .avatar {
-  width: 80px;
-  border-radius: 50%;
-} */
-
 body {
     background-image: url("https://i.ibb.co/HF7MF3t/perry-grone-lb-Lg-FFl-ADr-Y-unsplash.jpg"); 
     background-size: cover;
@@ -41,7 +36,6 @@ body {
   border-radius: 4px;
   margin-top: -250px;
   padding: 8px;
-  /* font-family: 'Josefin Slab', serif;  */
   color: white;
   font-weight: bold;
   border: none;
@@ -61,7 +55,7 @@ body {
   float: right;
   background-color: rgb(193, 187, 224);
   border-radius: 4px;
-  font-family: 'Josefin Slab', serif; 
+  /* font-family: 'Josefin Slab', serif;  */
   padding: 50px;
   margin-left: 2px;
 }
@@ -69,19 +63,20 @@ body {
 .sidebar {
   text-align: center;
   width: 26%;
-  height: 447px;
+  /* height: 447px; */
   float: left;
   background-color: lightgrey;
   border-radius: 4px;
-  font-family: 'Josefin Slab', serif; 
+  /* font-family: 'Josefin Slab', serif;  */
   padding: 50px;
 }
 
 .card {
-  padding: 5px;
+  padding: 8px;
   background-color: rgb(248, 249, 250); 
   height: 210px;
   border-radius: 4px;
+  box-shadow: 4px 4px;
   font-family: 'Josefin Slab', serif; 
 }
 
@@ -117,29 +112,28 @@ body {
 
 .your-volunteer {
     z-index: 1;
+    box-shadow: 4px 4px #000;
     color: white;
     background-color: rgb(62, 115, 198);
-    font-family: 'Josefin Slab', serif;
+    /* font-family: 'Josefin Slab', serif; */
     font-weight: bold;
     border-radius: 4px;
     padding: 8px;
-    display: inline-block;
+    /* display: inline-block; */
     text-align: center;
-    width: 230px;
+    width: 125%;
     margin-right: 10px;
     margin-left: -30px;
     margin-top: -7px;
-    
 }
 
-.your-volunteer-btn {
+.sidebar-btn {
   z-index: 1;
   color: white;
   float: left;
   display: inline-block;
   background-color: rgb(62, 115, 198);
-  /* font-family: 'Josefin Slab', serif; */
-  width: 230px;
+  width: 125%;
   text-align: center; 
   font-weight: bold;
   border-radius: 4px;
@@ -148,6 +142,71 @@ body {
   margin-right: 10px;
   margin-left: -30px;
   margin-top: -7px;
+}
+
+.sidebar-btn2 {
+  z-index: 1;
+  color: rgb(62, 115, 198);
+  float: left;
+  display: inline-block;
+  background-color: rgb(255, 255, 255);
+  width: 125%;
+  text-align: center; 
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 8px;
+  border: none;
+  margin-right: 10px;
+  margin-left: -30px;
+  margin-top: 8px;
+}
+
+.chat {
+  z-index: 1;
+  box-shadow: 4px 4px #000;
+  color: rgb(62, 115, 198);
+  float: left;
+  margin-right: 10px;
+  margin-left: -30px;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: rgb(255, 255, 255);
+  width: 125%;
+  text-align: center; 
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 8px;
+  border: none;
+  /* height: 250px; */
+}
+
+.msg-form {
+  display: inline-block;
+  margin-left: -4px;
+  /* width: 125%; */
+}
+
+.msg-text {
+  font-size: 10px;
+}
+.make-smaller {
+  font-size: 8px;
+}
+
+.from-another {
+  float: left;
+  color: red;
+  font-weight: bold;
+}
+
+.from-me {
+  font-weight: bold;
+  color: royalblue;
+}
+
+.chat-title {
+  font-size: 12px;
+  color: black;
 }
 
 .li {
@@ -163,10 +222,6 @@ body {
   border-radius: 4px;
   height: 100px;
 }
-
-/* .welcome {
-  margin-bottom: -10px;
-} */
 
 .goal {
   background-color: red;
@@ -233,36 +288,7 @@ body {
   float: right;
 }
 
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.under-message {
+  font-size: 10px;
+  margin-top: 8px;
 }

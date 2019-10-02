@@ -1,18 +1,24 @@
 import React from 'react'
 
-
 class Favorites extends React.Component {
     handleClick = () => {
         this.props.handleVolunteerClick()
     }
 
     handleOpptyClick = (fav) => {
-        // console.log(fav)
         this.props.addToPastWork(fav)
     }
 
+    handleMessagingClick = (fav) => {
+        // console.log(fav)
+        // console.log("I'd like to message the owner of this job")
+        this.props.handleMessageClick(fav)
+        this.props.sendingMsg()
+    }
+
     render() {
-        const favoritesMapped = this.props.favorites.map(fav => (<li className="li" onClick={() => this.handleOpptyClick(fav)} key={fav.id}>{fav.organization}</li>))
+        // console.log(this.props)
+        const favoritesMapped = this.props.favorites.map(fav => (<div><li className="li" onClick={() => this.handleOpptyClick(fav)} key={fav.id}>{fav.organization}</li><span onClick={() => this.handleMessagingClick(fav)}>📨</span></div>))
         const pastWorkMapped = this.props.pastWork.map(pastW => (<li className="li" key={pastW.id}>{pastW.organization}</li>))
         return(
             <div className="your-volunteer">
@@ -26,7 +32,6 @@ class Favorites extends React.Component {
                 {pastWorkMapped}
                 </ul>
             </div>
-    
         )
     }
 }

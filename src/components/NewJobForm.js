@@ -6,7 +6,8 @@ class NewJobForm extends React.Component {
         organization: '',
         address: '',
         title: '',
-        description: ''
+        description: '',
+        user_id: this.props.userId
     }
 
     handleXClick = () => {
@@ -20,11 +21,10 @@ class NewJobForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.handleAddNewJob(this.state)
-        this.setState({organization:'', address: '', title: '', description: ''})
+        this.setState({organization:'', address: '', title: '', description: '', user_id: ''})
     }
 
     render(){
-        console.log(this.state)
         return(
             <div className="search-area">
                 <div><span className="closing-x" onClick={this.handleXClick}>𝗫</span></div>

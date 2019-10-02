@@ -4,6 +4,7 @@ import LoginBar from './LoginBar'
 import Search from './Search'
 import SideBar from './SideBar'
 import NewJobForm from './NewJobForm'
+import EditJobForm from './EditJobForm'
 
 class Profile extends React.Component {
     state = {
@@ -14,8 +15,10 @@ class Profile extends React.Component {
         monthlyGoal: '',
         points: '',
         pastWork: [],
+        componentToRender: 'search',
         newJobClicked: false,
-        editJobClicked: false
+        editJobClicked: false,
+        editSelected: {}
     }
 
     componentDidMount(){
@@ -26,7 +29,8 @@ class Profile extends React.Component {
     })
     .then(res => res.json())
     .then(user => {
-        console.log(user.admin)
+        console.log(user);
+        
         this.setState({
             user: user,
             username: user.username, 
@@ -79,20 +83,20 @@ addToPastWork = (opptyObj) => {
     }
 
     handleNewJobClicked = () => {
-        this.setState({newJobClicked: true})
+        this.setState({newJobClicked: true, componentToRender: 'newJob', editJobClicked: false})
     }
 
     closeNewJobs = () => {
-        this.setState({newJobClicked: false})
+        this.setState({newJobClicked: false, componentToRender: 'search'})
     }
 
     handleAddNewJob = (newJobOppty) => {
-        console.log(newJobOppty.organization)
         const newJob = {
             organization: newJobOppty.organization,
             address: newJobOppty.address,
             title: newJobOppty.title,
-            description: newJobOppty.description
+            description: newJobOppty.description,
+            user_id: newJobOppty.user_id
         }
 
         fetch('http://localhost:3000/jobs', {
@@ -102,33 +106,137 @@ addToPastWork = (opptyObj) => {
                 'Accept': 'application/json'
             },
             body: JSON.stringify(newJob)
-        })
+        }).then(res => res.json())
+        .then(newJob => {
+            this.setState({user: {
+            ...this.state.user, 
+                jobs: [...this.state.user.jobs, newJob]
+        }})})
     }
     
     handleEditJobClicked = () => {
-        console.log("editing this job....")
         this.setState({editJobClicked: true})
     }
 
+    handleEditXClick = () => {
+        this.setState({editJobClicked: false})
+    }
+
+    closeEditJobForm = () => {
+        this.setState({editJobClicked: false, componentToRender: 'search'})
+    }
+
+    handleJobToEdit = (job) => {
+        this.setState({editSelected: job, componentToRender: 'editJob'})
+    }
+
+    handleEditJob = (jobOppty) => {
+        
+        
+        const editedJob = {
+            organization: jobOppty.organization,
+            address: jobOppty.address,
+            title: jobOppty.title,
+            description: jobOppty.description,
+            user_id: jobOppty.user_id
+        }
+
+        fetch(`http://localhost:3000/jobs/${jobOppty.editJobId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(editedJob)
+        }).then(res => res.json())
+        .then(job => {
+
+            let jobsFiltered = this.state.user.jobs.map((oppty) => {
+                if(job.id !== oppty.id){
+                    return oppty
+                } else {
+                    return job
+                }
+             })
+
+            this.setState({user: {
+                ...this.state.user,
+                jobs: jobsFiltered
+            }})
+        })
+    }
+
+    handleDelete = (jobOppty) => {
+        fetch(`http://localhost:3000/jobs/${jobOppty.id}`, {
+            method: 'DELETE'
+        }).then(res => res.json())
+        .then(job => {
+            let filteredJobs = this.state.user.jobs.filter((oppty) => oppty.id !== jobOppty.id) 
+
+                this.setState({componentToRender: 'search', user: {
+                    ...this.state.user,
+                    jobs: filteredJobs
+                }})
+            })
+        }
+
+    whatToRender = () => {
+        if(this.state.componentToRender === 'newJob'){
+            return <NewJobForm 
+                userId={this.state.user.id} 
+                handleAddNewJob={this.handleAddNewJob} 
+                closeNewJobs={this.closeNewJobs} />
+        } else if(this.state.componentToRender === 'editJob'){
+            return <EditJobForm 
+                handleDelete={this.handleDelete}
+                handleEditXClick={this.handleEditXClick} 
+                handleEditJob={this.handleEditJob} 
+                closeEditJobForm={this.closeEditJobForm} 
+                editSelected={this.state.editSelected}/>
+         } else {
+            return <Search 
+                user={this.state.user}
+                favorites={this.state.favorites} 
+                addToFavorites={this.addToFavorites} />
+        }
+    }
+
     render() {
-        // console.log("profile props ", user)
-        console.log("profile's state editClicked? ", this.state.editJobClicked)
-        // const doneFavs = this.state.favorites.filter(fav => fav.done === true)
-    
+        // console.log(this.state)
         return(
             <div className="page-div">
             <Header />
             <br />
-            <LoginBar addToPastWork={this.addToPastWork} pastWork={this.state.pastWork} points={this.state.points} monthlyGoal={this.state.monthlyGoal} favorites={this.state.favorites} redirect={this.props.redirect} username={this.state.username}/>
+            <LoginBar 
+                addToPastWork={this.addToPastWork} 
+                pastWork={this.state.pastWork} 
+                points={this.state.points} 
+                monthlyGoal={this.state.monthlyGoal} 
+                favorites={this.state.favorites} 
+                redirect={this.props.redirect} 
+                username={this.state.username}/>
             <br />
-            {this.state.newJobClicked ? ( 
-            <NewJobForm handleAddNewJob={this.handleAddNewJob} closeNewJobs={this.closeNewJobs}/> ) :
-            <Search favorites={this.state.favorites} addToFavorites={this.addToFavorites}/>
-            }
-            <SideBar editJobClick={this.state.editJobClicked} handleEditJobClicked={this.handleEditJobClicked} handleNewJobClicked={this.handleNewJobClicked} user={this.state.user} addToPastWork={this.addToPastWork} pastWork={this.state.pastWork} points={this.state.points} monthlyGoal={this.state.monthlyGoal} favorites={this.state.favorites} redirect={this.props.redirect} username={this.state.username}/> 
-            </div>
-        )
-    }
+            {this.whatToRender()}
+            
+            <SideBar 
+                handleJobToEdit={this.handleJobToEdit} 
+                handleEditXClick={this.handleEditXClick} 
+                editJobClicked={this.state.editJobClicked} 
+                handleEditJobClicked={this.handleEditJobClicked} 
+                handleNewJobClicked={this.handleNewJobClicked} 
+                user={this.state.user} 
+                addToPastWork={this.addToPastWork} 
+                pastWork={this.state.pastWork} 
+                points={this.state.points} 
+                monthlyGoal={this.state.monthlyGoal} 
+                favorites={this.state.favorites} 
+                redirect={this.props.redirect} 
+                username={this.state.username}/> 
+            <br />          
+      </div>
+    )
+  }
 }
 
 export default Profile
+

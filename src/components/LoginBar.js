@@ -6,7 +6,7 @@ class LoginBar extends React.Component {
         this.props.redirect('landing')
     }
 render(){
-    console.log("loginBar's props ", this.props)
+    // console.log("loginBar's props ", this.props)
     return(
         <div>       
         <div className="login-bar">

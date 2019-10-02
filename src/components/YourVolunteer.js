@@ -10,16 +10,28 @@ class YourVolunteer extends React.Component {
         this.setState({yourVolunteerClicked: !this.state.yourVolunteerClicked})
     }
 
+    sendingMsg = () => {
+        this.setState({yourVolunteerClicked: !this.state.yourVolunteerClicked})
+    }
+
+    whatToRender = () => {
+        // if(this.props.user.admin){
+        //     return
+        // } else {
+        //     return
+        // }
+    }
+
     render(){
-    // console.log("your volunteer's props ", this.props)
+    console.log("your volunteer's props ", this.props)
         return(
             this.state.yourVolunteerClicked ? (
                 <div>
-                <Favorites addToPastWork={this.props.addToPastWork} pastWork={this.props.pastWork} favorites={this.props.favorites} handleVolunteerClick={this.handleClick}/>
+                <Favorites sendingMsg={this.sendingMsg} handleMessageClick={this.props.handleMessageClick} addToPastWork={this.props.addToPastWork} pastWork={this.props.pastWork} favorites={this.props.favorites} handleVolunteerClick={this.handleClick}/>
                 </div>
              ) : (
                 <div>
-                <button className="your-volunteer-btn" onClick={this.handleClick}>Your Volunteer Work</button>
+                <button className="sidebar-btn" onClick={this.handleClick}>Your Volunteer Work</button>
              </div> )
              
         )

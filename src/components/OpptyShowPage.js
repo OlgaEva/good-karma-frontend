@@ -8,7 +8,7 @@ class OpptyShowPage extends React.Component {
     }
 
     handleClick = (opptyObj) => {
-      console.log(opptyObj.id, this.props.favorites)
+      // console.log(opptyObj.id, this.props.favorites)
 
       let opportunity = this.props.favorites.find(oppty => {
         return oppty.job_id === opptyObj.id

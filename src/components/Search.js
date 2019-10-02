@@ -21,14 +21,22 @@ class Search extends React.Component {
     })
 }
 
+    whatToRender = () => {
+        if(this.props.user.admin){
+            return <h2 className="question">See all volunteer opportunities</h2>
+        } else {
+            return <h2 className="question">Where would you like to volunteer?</h2>
+        }
+    }
+
     render(){
-    // console.log("the search props ", this.props)
+    console.log("the search props ", this.props)
         const filteredOpportunities = this.state.opportunities.filter(oppty => oppty.address.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
     // console.log(filteredOpportunities)
         return(
-            <div className="search-area">
-                
-            <h2 className="question">Where would you like to volunteer?</h2>
+            <div className="search-area">   
+            {this.whatToRender()}
+            {/* <h2 className="question">Where would you like to volunteer?</h2> */}
             <form onSubmit={this.handleSubmit}>
             <input onChange={this.handleChange} value={this.state.searchTerm} type="text" placeholder="Search for opportunities" />
             <input type="submit" value="Search" />

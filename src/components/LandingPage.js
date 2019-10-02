@@ -18,7 +18,6 @@ class LandingPage extends React.Component {
     }
 
   render() {
-    //   console.log("landingpage props ", this.props)
     return(
         <div className="page-div">
         <Header />
@@ -28,7 +27,5 @@ class LandingPage extends React.Component {
         )
     }
 }
-
-
 
 export default LandingPage
