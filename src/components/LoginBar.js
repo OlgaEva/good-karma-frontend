@@ -14,12 +14,20 @@ class LoginBar extends React.Component {
         }
     }
 
+    whetherToRender = () => {
+        if(this.props.user.admin) {
+            return <h4 className="goal"><em>"To serve others and to do good." - Aristotle</em></h4>
+        } else {
+            return <h4 className="goal"><em>Your monthly volunteering goal is: {this.props.monthlyGoal} hours</em></h4>
+        }
+    }
+
 render(){
     return(
         <div>       
         <div className="login-bar">
             <h3 className="welcome">You are logged in as: {this.props.username}</h3>
-            <h4 className="goal"><em>Your monthly volunteering goal is: {this.props.monthlyGoal} hours</em></h4>
+            {this.whetherToRender()}
             <div className="star-span rotate"><span role="img">⭐️</span></div>
             {this.whatToRender()}
             <button className="logout-btn" onClick={this.handleClick}>Logout</button>
