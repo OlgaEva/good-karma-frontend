@@ -55,7 +55,6 @@ body {
   float: right;
   background-color: rgb(193, 187, 224);
   border-radius: 4px;
-  /* font-family: 'Josefin Slab', serif;  */
   padding: 50px;
   margin-left: 2px;
 }
@@ -63,11 +62,9 @@ body {
 .sidebar {
   text-align: center;
   width: 26%;
-  /* height: 447px; */
   float: left;
   background-color: lightgrey;
   border-radius: 4px;
-  /* font-family: 'Josefin Slab', serif;  */
   padding: 50px;
 }
 
@@ -86,7 +83,6 @@ body {
   background-color: rgb(62, 115, 198);
   border-radius: 4px;
   padding: 8px;
-  /* font-family: 'Josefin Slab', serif;  */
   color: white;
   font-weight: bold;
   border: none;
@@ -98,7 +94,6 @@ body {
   background-color: rgb(62, 115, 198);
   border-radius: 4px;
   padding: 8px;
-  /* font-family: 'Josefin Slab', serif;  */
   color: white;
   font-weight: bold;
   border: none;
@@ -115,11 +110,9 @@ body {
     box-shadow: 4px 4px #000;
     color: white;
     background-color: rgb(62, 115, 198);
-    /* font-family: 'Josefin Slab', serif; */
     font-weight: bold;
     border-radius: 4px;
     padding: 8px;
-    /* display: inline-block; */
     text-align: center;
     width: 125%;
     margin-right: 10px;
@@ -177,13 +170,14 @@ body {
   border-radius: 4px;
   padding: 8px;
   border: none;
-  /* height: 250px; */
+}
+.messages-ul {
+  list-style-type: none;
 }
 
 .msg-form {
   display: inline-block;
   margin-left: -4px;
-  /* width: 125%; */
 }
 
 .msg-text {
@@ -194,12 +188,14 @@ body {
 }
 
 .from-another {
-  float: left;
+  text-align: left;
+  margin-left: -50px;
   color: red;
   font-weight: bold;
 }
 
 .from-me {
+  text-align: right;
   font-weight: bold;
   color: royalblue;
 }
@@ -264,9 +260,7 @@ body {
 .star {
   height: 100px;
   width: 100px;
-  /* margin-right: 430px; */
   margin-top: -29px;
-  /* margin-bottom: -200; */
   z-index: 1;
   display: inline-block;
 }
@@ -291,4 +285,11 @@ body {
 .under-message {
   font-size: 10px;
   margin-top: 8px;
+}
+
+.larger {
+  font-size: 22px;
+  color: red;
+  margin: 2px;
+  margin-bottom: -5px;
 }

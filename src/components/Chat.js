@@ -12,16 +12,7 @@ class Chat extends React.Component {
     }
 
     componentDidMount(){
-        if(this.props.user.admin){
-        fetch('http://localhost:3000/messages')
-        .then(res => res.json())
-        .then(data => { console.log(data) 
-            this.setState({
-                sentMessages: data.filter(msg => msg.messenger_id === this.props.user.id),
-                receivedMessages: data.filter(msg => msg.messagee_id === this.props.user.id)
-            })
-        })
-        } else {
+    
         fetch('http://localhost:3000/messages')
         .then(res => res.json())
         .then(data => { 
@@ -30,7 +21,6 @@ class Chat extends React.Component {
                 receivedMessages: data.filter(msg => msg.messagee_id === this.props.user.id)
             })
         })
-      }
     }
 
     handleMessageObject = (msgObj) => {    
@@ -38,7 +28,6 @@ class Chat extends React.Component {
         .then(res => res.json())
         .then(data => { this.setState({volunteerName: data.username})
         })
-        console.log(msgObj)
         this.setState({whichMessage: msgObj})
     }
 
@@ -115,7 +104,7 @@ class Chat extends React.Component {
         const filteredSentMessages = this.state.sentMessages.filter(msg => msg.job_id === this.props.whichJobToMessage)  
         const filteredReceivedMessages = this.state.receivedMessages.filter(msg => msg.job_id === this.props.whichJobToMessage)
         if(this.props.user.admin){
-        return <div><p className="chat-title">Your Messages with {this.state.volunteerName}</p>
+        return <div><p className="chat-title">Your Messages with Volunteers</p>
         <ul className="messages-ul">
                     <Message handleMessageObject={this.handleMessageObject} orgName={this.props.orgName} user={this.props.user} receivedMessages={this.state.receivedMessages} sentMessages={this.state.sentMessages}/>
                 </ul></div> 
@@ -127,22 +116,12 @@ class Chat extends React.Component {
         }
     }
 
-    render(){
-
-        // const filteredSentMessages = this.state.sentMessages.filter(msg => msg.job_id === this.props.whichJobToMessage)  
-        // const filteredReceivedMessages = this.state.receivedMessages.filter(msg => msg.job_id === this.props.whichJobToMessage)  
-        console.log(this.state)
-        console.log(this.props)
+    render(){  
         return(
             this.props.wannaMessage ? ( 
             <div className="chat">
                 <div><span className="closing-x" onClick={this.handleXClick}>𝗫</span></div>
                 {this.whatToRender()}
-                {/* {!this.props.user.admin ? (
-                <p className="chat-title">Your Messages with {this.props.orgName}</p> ) : null } */}
-                {/* <ul className="messages-ul">
-                    <Message handleMessageObject={this.handleMessageObject} orgName={this.props.orgName} user={this.props.user} receivedMessages={filteredReceivedMessages} sentMessages={filteredSentMessages}/>
-                </ul> */}
                 <form onSubmit={this.handleSubmit}>
                     <input className="msg-form" onChange={this.handleChange} value={this.state.msgInput} type="text" />
                     <input type="submit" />

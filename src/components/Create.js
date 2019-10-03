@@ -6,7 +6,6 @@ class Create extends React.Component {
     }
 
     render(){
-        // console.log(this.props)
         return(
             <div className="create">
                 <button className="sidebar-btn" onClick={this.handleClick}>Post New Volunteer Job</button>

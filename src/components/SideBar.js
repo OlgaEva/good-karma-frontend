@@ -29,7 +29,6 @@ class SideBar extends React.Component {
     }
 
     render(){
-        // console.log(this.state)
         return(
             <div className="sidebar">
                 { !this.props.user.admin ? ( 

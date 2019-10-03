@@ -36,7 +36,6 @@ class LoginForm extends React.Component {
 
 
   render(){
-    // console.log("login props ", this.props)
   return(
   <Segment placeholder>
     <Grid columns={2} relaxed='very' stackable>

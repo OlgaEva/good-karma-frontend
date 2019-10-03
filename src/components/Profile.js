@@ -29,8 +29,6 @@ class Profile extends React.Component {
     })
     .then(res => res.json())
     .then(user => {
-        console.log(user);
-        
         this.setState({
             user: user,
             username: user.username, 
@@ -66,11 +64,7 @@ addToFavorites = (opptyObj) => {
 }
 
 addToPastWork = (opptyObj) => {
-    this.setState({pastWork: [...this.state.pastWork, opptyObj], points: this.state.points + 25})
-    const filteredFavs = this.state.favorites.filter(fav => fav.id !== opptyObj.id)
-    this.setState({ favorites: filteredFavs })
-
-    fetch(`http://localhost:3000/favorites/${opptyObj.id})`, {
+    fetch(`http://localhost:3000/favorites/${opptyObj.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -80,7 +74,24 @@ addToPastWork = (opptyObj) => {
             done: true
         })
       })
-    }
+      .then(res => res.json())
+      .then(updatedJob => this.setState({pastWork: [...this.state.pastWork, opptyObj]}))
+
+      const filteredFavs = this.state.favorites.filter(fav => fav.id !== opptyObj.id)
+      this.setState({favorites: filteredFavs })
+
+       fetch(`http://localhost:3000/users/${opptyObj.user_id}`, {
+           method: 'PATCH',
+           headers: {
+             'Content-Type': 'application/json',
+             'Accept': 'application/json'
+           },
+           body: JSON.stringify({
+             points: this.state.points + 25
+      })
+   }).then(res => res.json())
+   .then(updatedUser => this.setState({points: updatedUser.points}))
+}
 
     handleNewJobClicked = () => {
         this.setState({newJobClicked: true, componentToRender: 'newJob', editJobClicked: false})
@@ -202,7 +213,6 @@ addToPastWork = (opptyObj) => {
     }
 
     render() {
-        // console.log(this.state)
         return(
             <div className="page-div">
             <Header />
@@ -213,7 +223,8 @@ addToPastWork = (opptyObj) => {
                 points={this.state.points} 
                 monthlyGoal={this.state.monthlyGoal} 
                 favorites={this.state.favorites} 
-                redirect={this.props.redirect} 
+                redirect={this.props.redirect}
+                user={this.state.user} 
                 username={this.state.username}/>
             <br />
             {this.whatToRender()}

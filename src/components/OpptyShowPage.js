@@ -22,7 +22,6 @@ class OpptyShowPage extends React.Component {
   }
 
     render() {
-    // console.log(this.props)
         return(
             <div>
   <Container className="details-container" text>

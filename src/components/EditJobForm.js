@@ -31,19 +31,15 @@ class EditJobForm extends React.Component {
             editJobId: this.props.editSelected.id
         }
 
-// console.log(info)
         this.props.handleEditJob(info)
         this.setState({organization:'', address: '', title: '', description: '', user_id: '', editJobId: ''})
     }
 
     handleDeleteClick = (opptyObj) => {
-        // console.log(opptyObj)
         this.props.handleDelete(opptyObj)
     }
 
     render(){
-        // console.log(this.props)
-        // console.log(this.state)
         return(
             <div className="search-area">
                 <div><span className="closing-x" onClick={this.handleXClick}>𝗫</span></div>

@@ -14,16 +14,7 @@ class YourVolunteer extends React.Component {
         this.setState({yourVolunteerClicked: !this.state.yourVolunteerClicked})
     }
 
-    whatToRender = () => {
-        // if(this.props.user.admin){
-        //     return
-        // } else {
-        //     return
-        // }
-    }
-
     render(){
-    console.log("your volunteer's props ", this.props)
         return(
             this.state.yourVolunteerClicked ? (
                 <div>

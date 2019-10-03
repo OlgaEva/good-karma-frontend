@@ -43,8 +43,6 @@ class SearchResults extends React.Component{
 
 
     render(){
-        // console.log("the counter on search results ", this.state.counter)
-        // console.log("search results props ", this.props)
         return(
             this.state.cardClicked ? (
             <OpptyShowPage favorites={this.props.favorites} addToFavorites={this.props.addToFavorites} key={ this.state.whichCard.id } opportunity = { this.state.whichCard } handleBackToSearchResults={this.handleBackToSearchResults} resetCounter={this.resetCounter}/> 
