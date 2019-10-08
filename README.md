@@ -1,3 +1,6 @@
+<a href=“http://www.youtube.com/watch?feature=player_embedded&v=UUFXNihq2Xo” target=“_blank”>
+<img src=“http://img.youtube.com/v1/UUFXNihq2Xo/0.jpg” alt=“GoodKarma” width=“240” height=“180” border=“10” /></a>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
